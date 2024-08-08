@@ -1,9 +1,8 @@
 const router = require("express").Router();
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 
 const Register = require("../Models/register.model");
-
 router.post("/", async (req, res) => {
   const { usernameOrEmail, password } = req.body;
   console.log("Received login attempt with:", usernameOrEmail);
