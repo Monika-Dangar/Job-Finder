@@ -1,0 +1,11 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;  */
+
+/* Import external CSS files first */
+@import "flowbite/dist/flowbite.css"; /* Ensure this path is correct */
+
+/* Tailwind directives should come after imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
