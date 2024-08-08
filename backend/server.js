@@ -2,12 +2,20 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const Grid = require("gridfs-stream");
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+// CORS configuration
+const corsOptions = {
+  origin: "https://job-finder-client-alpha.vercel.app", // Your client domain
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+};
+
+app.use(cors(corsOptions));
+
+// app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;

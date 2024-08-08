@@ -21,7 +21,7 @@ const SignupCompoent = () => {
         password,
         mobilenumber
       );
-      console.log("Succesful signup", response);
+      // console.log("Succesful signup", response);
 
       if (response) {
         // Update values in store
