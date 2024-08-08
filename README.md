@@ -73,6 +73,8 @@ Job Finder is a comprehensive platform designed to streamline the job search and
 
 3. **Search and Apply:**
    - Users can search for job opportunities and apply directly through the platform, streamlining the job application process.
+  
+Feel free to give any suggestions or feedbacks!
 
 4. **Profile Updates:**
    - Users can update their profiles, add new skills, manage projects, and keep their resumes up-to-date.
