@@ -40,7 +40,6 @@ const NavBar = () => {
       active: authStatus,
       display: true,
     },
-
     {
       name: "Login",
       slug: "/login",
@@ -59,31 +58,33 @@ const NavBar = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleNavClick = (slug) => {
+    navigate(slug);
+    if (isOpen) {
+      toggleNavbar(); // Collapse the navbar if it was open
+    }
+  };
+
   return (
-    <nav className=" bg-white sticky top-0">
+    <nav className="bg-white sticky top-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a
           href="https://flowbite.com/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
-            src={logoImg}
-            // src="https://flowbite.com/docs/images/logo.svg"
-            className="bg-blackh h-8"
-            alt="JobFinder Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap ">
+          <img src={logoImg} className="bg-blackh h-8" alt="JobFinder Logo" />
+          <span className="self-center text-2xl font-semibold whitespace-nowrap">
             Job Finder
           </span>
         </a>
+
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {navItems.map((item) =>
             item.active && item.display === false ? (
               <div key={item.name}>
                 <button
-                  onClick={() => navigate(item.slug)}
+                  onClick={() => handleNavClick(item.slug)}
                   className="block py-2 px-3 text-white text-sm bg-blue-700 rounded md:p-2 md:ms-2 active:text-blue-200 "
-                  // className=" text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 sm:ms-3 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"                                // className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                 >
                   {item.name}
                 </button>
@@ -123,20 +124,18 @@ const NavBar = () => {
           </button>
         </div>
         <div
-          // className="items-center justify-between w-full hidden md:flex md:w-auto md:order-1"
           className={`items-center justify-between w-full ${
             isOpen ? "block" : "hidden"
           } md:flex md:w-auto md:order-1`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
             {navItems.map((item) =>
-              item.active && item.display === true ? (
+              item.active && item.display ? (
                 <li key={item.name}>
                   <button
-                    onClick={() => navigate(item.slug)}
+                    onClick={() => handleNavClick(item.slug)}
                     className="block py-2 px-3 rounded text-blue-700 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 active:bg-violet-700 cursor-pointer"
-                    // className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0  active:text-blue-200 "
                   >
                     {item.name}
                   </button>

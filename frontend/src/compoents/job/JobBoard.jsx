@@ -12,6 +12,8 @@ const JobBoard = () => {
       salary: [],
       location: [],
     },
+    salary_min: null,
+    salary_max: null,
   });
 
   const handleSearch = (data) => {
@@ -27,9 +29,14 @@ const JobBoard = () => {
         : data.filters;
 
     setSearchParams({
-      query: data.query,
-      countryCode: data.countryCode,
-      filters: updatedFilters,
+      query: data.query || "",
+      countryCode: data.countryCode || "in",
+      filters: updatedFilters || {
+        salary: [],
+        location: [],
+      },
+      salary_min: data.salary_min || null,
+      salary_max: data.salary_max || null,
     });
   };
 
@@ -42,7 +49,7 @@ const JobBoard = () => {
       <div className="flex flex-col justify-center md:flex-row max-w-screen-lg mx-auto">
         <div className="flex flex-col md:w-1/4 p-4 border-r">
           <FilterSalary
-            initialSelectedSalary={searchParams.filters.salary}
+            initialSelectedSalary={searchParams.filters.salary || []}
             onSalaryChange={(newSalaryList) => {
               // Set min and max salary based on selected salary range
               if (newSalaryList.length > 0) {

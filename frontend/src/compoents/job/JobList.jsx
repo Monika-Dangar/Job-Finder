@@ -70,7 +70,7 @@ const JobList = ({ searchParams }) => {
             ))}
           </div>
         ) : (
-          <p>No jobs found</p>
+          <p>No jobs found matching your criteria.</p>
         )}
       </div>
     </>
